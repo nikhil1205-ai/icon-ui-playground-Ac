@@ -3,12 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Loader Spinner</title>
-  <script>
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark") {
-      document.body.classList.add("dark");
-    }
-  </script>
   <style>
 
     body {
@@ -36,5 +30,11 @@
 </head>
 <body>
   <div class="loader"></div>
+  <script>
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      document.body.classList.add("dark");
+    }
+  </script>
 </body>
 </html>
