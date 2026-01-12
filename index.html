@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,28 +10,37 @@
   <link rel="stylesheet" href="css/theme.css" />
   <link rel="stylesheet" href="css/accessibility.css">
   <script src="js/theme.js" defer></script>
+  <script src="js/controls.js" defer></script>
 </head>
+
 <body>
 
-  <!-- HEADER -->
   <header class="navbar">
     <div class="nav-container">
       <h1>🎨 CSS Animation Gallery</h1>
       <p>
         A practical reference for building icon-based UI components with theme and accessibility support.
-        </p>
-        <h2>UI Components & Interactions</h2>
-        <p class="muted">
-          Each component demonstrates a common real-world UI interaction.
-          </p>
+      </p>
+      <h2>UI Components & Interactions</h2>
+      <p class="muted">
+        Each component demonstrates a common real-world UI interaction.
+      </p>
       <button id="themeToggle" class="theme-btn">
         Toggle Theme
       </button>
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
   <main class="container">
+
+    <section class="intro">
+      <h2>Control Panel</h2>
+      <p>Real-time animation adjustments.</p>
+
+      <div id="controls-container" class="control-panel">
+      </div>
+    </section>
+
     <section class="intro">
       <h2>Purpose</h2>
       <p>
@@ -42,7 +52,7 @@
     </section>
 
     <section class="use-cases">
-      
+
       <h2>Why This Exists</h2>
       <ul>
         <li>✔ Preview icon usage in real UI components</li>
@@ -60,7 +70,7 @@
         <h3>Primary Action Button</h3>
         <p>Hover feedback for primary actions.</p>
       </a>
-    
+
       <a class="card" href="animations/text/text-fade-in.html">
         <div class="card-preview">
           <div class="preview-text-lines">
@@ -71,7 +81,7 @@
         <h3>Content Reveal</h3>
         <p>Animated content entry.</p>
       </a>
-    
+
       <a class="card" href="animations/loader/loader-spin.html">
         <div class="card-preview">
           <div class="preview-loader"></div>
@@ -82,7 +92,6 @@
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer>
     <p>
       Internal UI reference • Continuously evolving • Open to contributions
@@ -90,4 +99,5 @@
   </footer>
 
 </body>
+
 </html>
