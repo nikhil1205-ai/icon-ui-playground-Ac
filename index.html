@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/theme.css" />
   <link rel="stylesheet" href="css/accessibility.css">
+
   <script src="js/theme.js" defer></script>
   <script src="js/controls.js" defer></script>
 </head>
@@ -19,13 +20,10 @@
     <div class="nav-container">
       <h1>🎨 CSS Animation Gallery</h1>
       <p>
-        A practical reference for building icon-based UI components with theme and accessibility support.
+        A professional reference for building icon-based UI components with real-time theming and accessibility support.
       </p>
       <h2>UI Components & Interactions</h2>
-      <p class="muted">
-        Each component demonstrates a common real-world UI interaction.
-      </p>
-      <button id="themeToggle" class="theme-btn">
+      <button id="themeToggle" class="theme-btn" aria-label="Toggle Dark Mode">
         Toggle Theme
       </button>
     </div>
@@ -35,42 +33,32 @@
 
     <section class="intro">
       <h2>Control Panel</h2>
-      <p>Real-time animation adjustments.</p>
-
-      <div id="controls-container" class="control-panel">
-      </div>
-    </section>
-
-    <section class="intro">
-      <h2>Purpose</h2>
-      <p>
-        Icon UI Playground is designed as a lightweight reference application
-        for testing and validating icon-based UI components.
-        It helps developers and designers experiment with visual feedback,
-        theming, and accessibility in a realistic UI environment.
-      </p>
+      <p>Adjust animation timing and sensitivity in real-time.</p>
+      <div id="controls-container" class="control-panel"></div>
     </section>
 
     <section class="use-cases">
-
       <h2>Why This Exists</h2>
       <ul>
-        <li>✔ Preview icon usage in real UI components</li>
-        <li>✔ Test light and dark theme contrast</li>
-        <li>✔ Experiment with subtle animations</li>
-        <li>✔ Validate accessibility preferences</li>
+        <li>✔ <strong>Preview</strong> icon usage in production-ready UI components</li>
+        <li>✔ <strong>Test</strong> light and dark theme contrast instantly</li>
+        <li>✔ <strong>Validate</strong> accessibility (prefers-reduced-motion)</li>
       </ul>
     </section>
 
+    <h3 class="category-title">Buttons</h3>
     <section class="gallery">
       <a class="card" href="animations/button/button-hover.html">
         <div class="card-preview">
-          <div class="preview-btn">Action</div>
+          <div class="preview-btn">Hover Me</div>
         </div>
-        <h3>Primary Action Button</h3>
-        <p>Hover feedback for primary actions.</p>
+        <h3>Primary Action</h3>
+        <p>Scale and shadow feedback for primary calls-to-action.</p>
       </a>
+    </section>
 
+    <h3 class="category-title">Text</h3>
+    <section class="gallery">
       <a class="card" href="animations/text/text-fade-in.html">
         <div class="card-preview">
           <div class="preview-text-lines">
@@ -79,25 +67,28 @@
           </div>
         </div>
         <h3>Content Reveal</h3>
-        <p>Animated content entry.</p>
+        <p>Smooth opacity and slide-in entry for text blocks.</p>
       </a>
+    </section>
 
+    <h3 class="category-title">Loaders</h3>
+    <section class="gallery">
       <a class="card" href="animations/loader/loader-spin.html">
         <div class="card-preview">
           <div class="preview-loader"></div>
         </div>
-        <h3>Loading Indicator</h3>
-        <p>Progress feedback during tasks.</p>
+        <h3>Spinner</h3>
+        <p>Indeterminate state indicator for async tasks.</p>
       </a>
     </section>
+
   </main>
 
   <footer>
     <p>
-      Internal UI reference • Continuously evolving • Open to contributions
+      Open Source UI Playground • Built for Developers
     </p>
   </footer>
 
 </body>
-
 </html>

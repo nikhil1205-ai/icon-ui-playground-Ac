@@ -1,8 +1,12 @@
-body,
-.navbar,
-.card,
-footer {
-  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+/* =====================
+   BASE STYLES & VARIABLES
+===================== */
+:root {
+  --btn-duration: 0.2s;
+  --fade-duration: 2s;
+  --text-delay: 0.3s;
+  --spin-duration: 1s;
+  --anim-play-state: running;
 }
 
 * {
@@ -11,89 +15,88 @@ footer {
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background: var(--bg-color);
   color: var(--text-color);
   line-height: 1.6;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* --- HERO SECTION REDESIGN START --- */
-
+/* =====================
+   HERO / NAVBAR
+===================== */
 .navbar {
   background: var(--card-bg);
   border-bottom: 1px solid var(--border-color);
-  /* Ensures background styling is contained */
-  position: relative;
-
-  /* UPDATED: Takes up 95% of the viewport height */
-  min-height: 95vh;
-  
-  /* Keeps the content perfectly centered */
+  width: 100%;
   display: flex;
   align-items: center; 
   justify-content: center;
+  /* Mobile Default: Let content dictate height */
+  min-height: auto; 
+  padding: 1rem 0;
+}
+
+/* Desktop: Full height elegant hero */
+@media (min-width: 768px) {
+  .navbar {
+    min-height: 85vh; /* Slightly reduced from 95vh for better fold visibility */
+  }
 }
 
 .nav-container {
+  width: 100%;
   max-width: 1100px;
   margin: auto;
-  /* Increased padding for "breathability" */
-  padding: 4rem 1.5rem;
-  /* Centering Logic */
+  padding: 2rem 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
 
-/* Main Title with Gradient Effect */
 .nav-container h1 {
   margin: 0 0 1rem 0;
-  font-size: 3.5rem; /* Large landing-page size */
+  /* Responsive Font Size */
+  font-size: clamp(2rem, 5vw, 3.5rem); 
   line-height: 1.1;
   font-weight: 800;
   letter-spacing: -0.02em;
-  
-  /* The Gradient Magic */
   background: var(--hero-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: var(--text-color); /* Fallback */
+  color: var(--text-color);
 }
 
-/* Secondary Title */
 .nav-container h2 {
-  font-size: 1.5rem;
-  margin: 2.5rem 0 0.5rem;
+  font-size: 1.25rem;
+  margin: 1.5rem 0 0.5rem;
   font-weight: 600;
   color: var(--text-color);
 }
 
-/* Description Text */
 .nav-container p {
   margin: 0;
   color: var(--muted-text);
-  font-size: 1.125rem;
-  max-width: 600px; /* Limits width for readability */
+  font-size: 1rem;
+  max-width: 600px;
   line-height: 1.6;
 }
 
-/* Modern "Pill" Shape Button */
+/* Theme Button */
 .theme-btn {
   margin-top: 2rem;
   padding: 0.75rem 2rem;
   border: 1px solid var(--border-color);
   background: var(--bg-color);
   color: var(--text-color);
-  border-radius: 50px; /* Pill shape */
+  border-radius: 50px;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.2s ease;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  
-  /* Flexbox for potential icon usage later */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -105,12 +108,9 @@ body {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.theme-btn:active {
-  transform: translateY(0);
-}
-
-/* --- HERO SECTION REDESIGN END --- */
-
+/* =====================
+   MAIN LAYOUT
+===================== */
 .container {
   max-width: 1100px;
   margin: auto;
@@ -118,23 +118,51 @@ body {
 }
 
 .intro {
-  max-width: 600px;
+  max-width: 700px;
   margin-bottom: 3rem;
 }
 
 .intro h2 {
-  font-size: 2rem;
+  font-size: 1.75rem;
   margin-bottom: 0.5rem;
 }
 
-.intro p {
+.intro p, 
+.use-cases ul {
   color: var(--muted-text);
 }
 
+.use-cases {
+  margin-bottom: 3rem;
+}
+.use-cases ul {
+  padding-left: 1.2rem;
+}
+.use-cases li {
+  margin-bottom: 0.5rem;
+}
+
+/* =====================
+   GALLERY & CARDS
+===================== */
+/* Category Headers */
+.category-title {
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+/* Grid Layout Fix */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  /* CRITICAL FIX: 'auto-fill' prevents single items from stretching */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
+  width: 100%;
 }
 
 .card {
@@ -145,15 +173,9 @@ body {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   text-decoration: none;
   color: inherit;
-  display: block; /* Ensures links behave like blocks */
-}
-
-.card h3 {
-  margin-top: 0;
-}
-
-.card p {
-  color: var(--muted-text);
+  display: block;
+  /* Safety constraint for ultra-wide monitors */
+  max-width: 100%; 
 }
 
 .card:hover {
@@ -161,123 +183,94 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
+.card h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.card p {
+  color: var(--muted-text);
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+/* Card Previews */
 .card-preview {
-  height: 100px;
-  background-color: rgba(128, 128, 128, 0.1);
+  height: 120px;
+  background-color: rgba(128, 128, 128, 0.05);
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1rem;
   overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.03);
 }
 
-/* Animation Variables */
-:root {
-  --btn-duration: 0.2s;
-  --fade-duration: 2s;
-  --text-delay: 0.3s;
-  --spin-duration: 1s;
-  --anim-play-state: running;
-}
-
-/* Preview Button Styles */
+/* =====================
+   PREVIEW ANIMATIONS
+===================== */
+/* Button Preview */
 .preview-btn {
   background-color: #007bff;
   color: white;
-  padding: 8px 16px;
-  border-radius: 4px;
+  padding: 8px 20px;
+  border-radius: 6px;
   font-size: 0.9rem;
-  font-weight: bold;
+  font-weight: 600;
   transition: transform var(--btn-duration) ease, background-color var(--btn-duration);
 }
-
 .card:hover .preview-btn,
 .preview-btn.simulate-hover {
-  transform: scale(1.1);
-  background-color: #0056b3;
+  transform: scale(1.05);
+  background-color: #0069d9;
 }
 
-/* Text Lines Animation */
+/* Text Preview */
 .preview-text-lines {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   width: 60%;
 }
-
 .line {
   height: 8px;
-  /* CHANGED: Now uses theme variable instead of #aaa */
   background-color: var(--skeleton-bg);
   border-radius: 4px;
-
   animation: fadeInPulse var(--fade-duration) infinite ease-in-out;
   animation-play-state: var(--anim-play-state);
 }
-
-.line-1 {
-  width: 100%;
-}
-
-.line-2 {
-  width: 70%;
-  animation-delay: var(--text-delay);
-}
+.line-1 { width: 100%; }
+.line-2 { width: 70%; animation-delay: var(--text-delay); }
 
 @keyframes fadeInPulse {
-  0%, 100% { opacity: 0.3; transform: translateY(2px); }
-  50% { opacity: 1; transform: translateY(0); }
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
 }
 
-/* Loader Animation */
+/* Loader Preview */
 .preview-loader {
-  width: 30px;
-  height: 30px;
-  /* CHANGED: Uses theme variable for the circle track */
-  border: 4px solid var(--spinner-track);
-  /* CHANGED: Uses your brand accent (Indigo) instead of hardcoded blue */
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--spinner-track);
   border-top-color: var(--accent);
   border-radius: 50%;
   animation: spin var(--spin-duration) linear infinite;
   animation-play-state: var(--anim-play-state);
 }
+@keyframes spin { to { transform: rotate(360deg); } }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-footer {
-  margin-top: 4rem;
-  padding: 1.5rem;
-  text-align: center;
-  color: var(--muted-text);
-  border-top: 1px solid var(--border-color);
-  background: var(--bg-color);
-}
-
-.use-cases {
-  margin-bottom: 3rem;
-}
-
-.use-cases ul {
-  padding-left: 1.2rem;
-  color: var(--muted-text);
-}
-
-.use-cases li {
-  margin-bottom: 0.5rem;
-}
-
+/* =====================
+   CONTROLS & FOOTER
+===================== */
 .control-panel {
   background: var(--card-bg);
-  padding: 2rem;
-  border: 2px solid black;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   margin-bottom: 3rem;
   display: grid;
-  gap: 1.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  gap: 1rem;
 }
 
 .control-group {
@@ -285,7 +278,7 @@ footer {
   grid-template-columns: 1fr auto;
   gap: 0.5rem;
   align-items: center;
-  padding: 1rem;
+  padding: 0.75rem;
   border: 1px solid var(--border-color);
   border-radius: 8px;
   background: rgba(0, 0, 0, 0.02);
@@ -297,49 +290,62 @@ footer {
   grid-column: 1 / -1;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
 }
 
 .control-group input[type="range"] {
   grid-column: 1 / -1;
   width: 100%;
   cursor: pointer;
+  accent-color: var(--accent);
 }
 
 .control-value {
   font-family: monospace;
   background: var(--bg-color);
-  padding: 0.2rem 0.5rem;
+  padding: 2px 6px;
   border-radius: 4px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   border: 1px solid var(--border-color);
 }
 
 .control-actions {
   display: flex;
   gap: 1rem;
-  margin-top: 1rem;
-  padding-top: 0;
-  border-top: none;
   padding: 1rem;
   border: 1px solid var(--border-color);
   border-radius: 8px;
   background: rgba(0, 0, 0, 0.02);
 }
 
-/* Fix for control panel button to ensure it doesn't break layout */
 .control-actions .theme-btn {
   margin-top: 0;
   flex: 1;
 }
 
-/* RESPONSIVE TWEAKS FOR HERO */
+footer {
+  margin-top: 5rem;
+  padding: 2rem;
+  text-align: center;
+  color: var(--muted-text);
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-color);
+  font-size: 0.9rem;
+}
+
+/* =====================
+   RESPONSIVE TWEAKS
+===================== */
 @media (max-width: 600px) {
-  .nav-container h1 {
-    font-size: 2.5rem;
+  .category-title {
+    margin-top: 2rem; /* Less whitespace on mobile */
+    font-size: 1.3rem;
   }
-  .nav-container {
-    padding: 3rem 1rem;
+  
+  .container {
+    padding: 1.5rem 1rem;
+  }
+  
+  .control-actions {
+    flex-direction: column;
   }
 }
