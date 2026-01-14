@@ -208,9 +208,10 @@ body {
 
 .line {
   height: 8px;
-  background-color: #aaa;
+  /* CHANGED: Now uses theme variable instead of #aaa */
+  background-color: var(--skeleton-bg);
   border-radius: 4px;
-  opacity: 0.4;
+
   animation: fadeInPulse var(--fade-duration) infinite ease-in-out;
   animation-play-state: var(--anim-play-state);
 }
@@ -233,8 +234,10 @@ body {
 .preview-loader {
   width: 30px;
   height: 30px;
-  border: 4px solid #e0e0e0;
-  border-top-color: #007bff;
+  /* CHANGED: Uses theme variable for the circle track */
+  border: 4px solid var(--spinner-track);
+  /* CHANGED: Uses your brand accent (Indigo) instead of hardcoded blue */
+  border-top-color: var(--accent);
   border-radius: 50%;
   animation: spin var(--spin-duration) linear infinite;
   animation-play-state: var(--anim-play-state);
