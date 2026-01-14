@@ -9,6 +9,9 @@
 
   /* NEW: Hero Gradient (Dark Text → Indigo Accent) */
   --hero-gradient: linear-gradient(135deg, #222 30%, #4f46e5 100%);
+
+  --skeleton-bg: #d1d5db;     /* Neutral gray for text lines */
+  --spinner-track: #e5e7eb;
 }
 
 body.dark {
@@ -22,4 +25,6 @@ body.dark {
 
   /* NEW: Hero Gradient (White Text → Light Indigo Accent) */
   --hero-gradient: linear-gradient(135deg, #ffffff 30%, #a5b4fc 100%);
+  --skeleton-bg: #404040;     /* Lighter gray to stand out on dark cards */
+  --spinner-track: #333333;
 }
