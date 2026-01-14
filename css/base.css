@@ -17,40 +17,99 @@ body {
   line-height: 1.6;
 }
 
+/* --- HERO SECTION REDESIGN START --- */
+
 .navbar {
   background: var(--card-bg);
   border-bottom: 1px solid var(--border-color);
+  /* Ensures background styling is contained */
+  position: relative;
+
+  /* UPDATED: Takes up 95% of the viewport height */
+  min-height: 95vh;
+  
+  /* Keeps the content perfectly centered */
+  display: flex;
+  align-items: center; 
+  justify-content: center;
 }
 
 .nav-container {
   max-width: 1100px;
   margin: auto;
-  padding: 1.5rem;
+  /* Increased padding for "breathability" */
+  padding: 4rem 1.5rem;
+  /* Centering Logic */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
+/* Main Title with Gradient Effect */
 .nav-container h1 {
-  margin: 0;
+  margin: 0 0 1rem 0;
+  font-size: 3.5rem; /* Large landing-page size */
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  
+  /* The Gradient Magic */
+  background: var(--hero-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--text-color); /* Fallback */
 }
 
-.nav-container p {
-  margin: 0.5rem 0 0;
-  color: var(--muted-text);
-}
-
-.theme-btn {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--border-color);
-  background: var(--card-bg);
+/* Secondary Title */
+.nav-container h2 {
+  font-size: 1.5rem;
+  margin: 2.5rem 0 0.5rem;
+  font-weight: 600;
   color: var(--text-color);
-  border-radius: 6px;
+}
+
+/* Description Text */
+.nav-container p {
+  margin: 0;
+  color: var(--muted-text);
+  font-size: 1.125rem;
+  max-width: 600px; /* Limits width for readability */
+  line-height: 1.6;
+}
+
+/* Modern "Pill" Shape Button */
+.theme-btn {
+  margin-top: 2rem;
+  padding: 0.75rem 2rem;
+  border: 1px solid var(--border-color);
+  background: var(--bg-color);
+  color: var(--text-color);
+  border-radius: 50px; /* Pill shape */
+  font-weight: 600;
+  font-size: 0.95rem;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  
+  /* Flexbox for potential icon usage later */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .theme-btn:hover {
   background: var(--border-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
+
+.theme-btn:active {
+  transform: translateY(0);
+}
+
+/* --- HERO SECTION REDESIGN END --- */
 
 .container {
   max-width: 1100px;
@@ -84,6 +143,9 @@ body {
   border-radius: 12px;
   border: 1px solid var(--border-color);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block; /* Ensures links behave like blocks */
 }
 
 .card h3 {
@@ -110,6 +172,7 @@ body {
   overflow: hidden;
 }
 
+/* Animation Variables */
 :root {
   --btn-duration: 0.2s;
   --fade-duration: 2s;
@@ -118,6 +181,7 @@ body {
   --anim-play-state: running;
 }
 
+/* Preview Button Styles */
 .preview-btn {
   background-color: #007bff;
   color: white;
@@ -134,6 +198,7 @@ body {
   background-color: #0056b3;
 }
 
+/* Text Lines Animation */
 .preview-text-lines {
   display: flex;
   flex-direction: column;
@@ -160,19 +225,11 @@ body {
 }
 
 @keyframes fadeInPulse {
-
-  0%,
-  100% {
-    opacity: 0.3;
-    transform: translateY(2px);
-  }
-
-  50% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  0%, 100% { opacity: 0.3; transform: translateY(2px); }
+  50% { opacity: 1; transform: translateY(0); }
 }
 
+/* Loader Animation */
 .preview-loader {
   width: 30px;
   height: 30px;
@@ -184,9 +241,7 @@ body {
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }
 
 footer {
@@ -196,11 +251,6 @@ footer {
   color: var(--muted-text);
   border-top: 1px solid var(--border-color);
   background: var(--bg-color);
-}
-
-.card {
-  text-decoration: none;
-  color: inherit;
 }
 
 .use-cases {
@@ -275,11 +325,18 @@ footer {
   background: rgba(0, 0, 0, 0.02);
 }
 
+/* Fix for control panel button to ensure it doesn't break layout */
 .control-actions .theme-btn {
   margin-top: 0;
   flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+}
+
+/* RESPONSIVE TWEAKS FOR HERO */
+@media (max-width: 600px) {
+  .nav-container h1 {
+    font-size: 2.5rem;
+  }
+  .nav-container {
+    padding: 3rem 1rem;
+  }
 }
