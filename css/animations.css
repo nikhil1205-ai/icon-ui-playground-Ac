@@ -1,0 +1,132 @@
+/* ===========================================
+   Shared Animation Page Styles
+   =========================================== */
+
+/* Page Layout */
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  color: #e5e7eb;
+  background: #000;
+}
+
+/* Component Card */
+.component-wrapper {
+  max-width: 480px;
+  width: 100%;
+  padding: 1.75rem;
+  border-radius: 14px;
+  background: #0b0b0b;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.component-wrapper h3 {
+  margin-top: 0;
+  color: #f9fafb;
+}
+
+/* Preview Area */
+.preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  margin: 1rem 0;
+  border-radius: 10px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.04),
+    rgba(255, 255, 255, 0.01)
+  );
+}
+
+/* Code Toggle */
+details {
+  margin-top: 1rem;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 600;
+  user-select: none;
+  color: #e5e7eb;
+}
+
+/* Code Block */
+.code-block {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  background: linear-gradient(180deg, #020617, #000);
+  color: #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.code-block h4 {
+  margin: 0.75rem 0 0.25rem;
+  font-size: 0.85rem;
+  color: #60a5fa;
+}
+
+.code-block pre {
+  margin: 0;
+}
+
+/* ===========================================
+   Animation-Specific Styles
+   =========================================== */
+
+/* Button Hover Animation */
+.preview button {
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.preview button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+}
+
+/* Loader Spinner Animation */
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 6px solid rgba(255, 255, 255, 0.15);
+  border-top: 6px solid var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Text Fade In Animation */
+.fade-text {
+  font-size: 2.5rem;
+  font-weight: 600;
+  opacity: 0;
+  animation: fadeIn 1.2s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}

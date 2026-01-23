@@ -17,7 +17,7 @@
       margin: 0;
       font-family: system-ui, sans-serif;
       color: #e5e7eb;
-      background: #000;
+      background: #000; /* true black */
     }
 
     /* Component Card */
@@ -27,6 +27,7 @@
       padding: 2rem;
       border-radius: 14px;
       background: #0b0b0b;
+
       border: 1px solid rgba(255, 255, 255, 0.05);
       box-shadow:
         0 20px 40px rgba(0, 0, 0, 0.8),
@@ -46,6 +47,7 @@
       padding: 3rem 1rem;
       margin: 1rem 0;
       border-radius: 10px;
+
       background: linear-gradient(
         135deg,
         rgba(255, 255, 255, 0.04),
@@ -53,17 +55,12 @@
       );
     }
 
-    /* Animation Variable */
-    :root {
-      --fade-duration: 1.2s;
-    }
-
     /* Animated Text */
     .fade-text {
       font-size: 2.5rem;
       font-weight: 600;
       opacity: 0;
-      animation: fadeIn var(--fade-duration) ease forwards;
+      animation: fadeIn 1.2s ease forwards;
     }
 
     @keyframes fadeIn {
@@ -91,8 +88,14 @@
       border-radius: 10px;
       overflow-x: auto;
       font-size: 0.85rem;
-      background: linear-gradient(180deg, #020617, #000);
+
+      background: linear-gradient(
+        180deg,
+        #020617,
+        #000
+      );
       color: #e5e7eb;
+
       border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
@@ -104,75 +107,6 @@
 
     pre {
       margin: 0;
-    }
-
-    /* ---------- Control Panel ---------- */
-    .control-panel {
-      max-width: 520px;
-      width: 100%;
-      margin-top: 1.25rem;
-      padding: 1.25rem 1.5rem;
-      border-radius: 14px;
-      background: #0b0b0b;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      box-shadow:
-        0 16px 32px rgba(0, 0, 0, 0.7),
-        inset 0 1px 0 rgba(255, 255, 255, 0.03);
-    }
-
-    .control-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-
-    .control-header h4 {
-      margin: 0;
-      font-size: 0.95rem;
-      color: #f9fafb;
-    }
-
-    .control-value {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #60a5fa;
-    }
-
-    .control-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .control-label {
-      font-size: 0.8rem;
-      color: #cbd5f5;
-    }
-
-    input[type="range"] {
-      appearance: none;
-      height: 4px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--accent), #2563eb);
-      cursor: pointer;
-    }
-
-    input[type="range"]::-webkit-slider-thumb {
-      appearance: none;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: #fff;
-      border: 2px solid var(--accent);
-    }
-
-    input[type="range"]::-moz-range-thumb {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: #fff;
-      border: 2px solid var(--accent);
     }
   </style>
 </head>
